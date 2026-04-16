@@ -1,0 +1,147 @@
+
+/* Slider container */
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 8px;
+  color: #fff;
+  max-width: 80%;
+}
+
+.slide-caption {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.slide-sub {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slide-cta {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slide-cta:hover {
+  background: #2980b9;
+}
+
+/* Arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.slider-arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+/* Dots */
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active-dot,
+.dot:hover {
+  background: #fff;
+}
+
+/* Play/Pause button */
+.play-pause-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    height: 400px;
+  }
+  .slide-caption {
+    font-size: 1.8rem;
+  }
+  .slide-sub {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,158 @@
+/* UserHistory.css */
+
+.books-container {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(to right, #f8fafc, #e2e8f0);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.books-container h2 {
+  text-align: center;
+  color: #1e293b;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 6px solid #2563eb;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+}
+
+.book-card h3 {
+  color: #0f172a;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.book-card p {
+  margin: 10px 0;
+  color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.book-card b {
+  color: #0f172a;
+}
+
+.status-returned {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.status-borrowed {
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.status-late {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.loading-text,
+.empty-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #475569;
+  margin-top: 50px;
+  font-weight: 500;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .books-container {
+    padding: 20px;
+  }
+
+  .books-container h2 {
+    font-size: 1.7rem;
+  }
+
+  .history-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .book-card {
+    padding: 18px;
+  }
+
+  .book-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .book-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .books-container {
+    padding: 15px;
+  }
+
+  .books-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .book-card {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .book-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .book-card p {
+    font-size: 0.9rem;
+  }
+}
+.remove-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #dc2626;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.remove-btn:hover {
+  background: #b91c1c;
+  transform: scale(1.02);
+}
+
+@media (max-width: 480px) {
+  .remove-btn {
+    padding: 9px;
+    font-size: 0.9rem;
+  }
+}

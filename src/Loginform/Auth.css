@@ -1,0 +1,233 @@
+/* Auth.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+}
+
+.auth-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  color: #6b7280;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: white;
+}
+
+.input-group input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.input-group input::placeholder {
+  color: #9ca3af;
+}
+
+.password-group {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.password-toggle:hover {
+  opacity: 1;
+}
+
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  font-size: 0.875rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #4b5563;
+}
+
+.remember-me input {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+.forgot-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 0.875rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  font-family: inherit;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-toggle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.auth-toggle a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.auth-toggle a:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .auth-container {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .auth-card h2 {
+    font-size: 1.75rem;
+  }
+
+  .auth-options {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+}
+.forgot-password {
+  text-align: right;
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.forgot-password a {
+  font-size: 14px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+  color: #1d4ed8;
+}

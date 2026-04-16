@@ -1,0 +1,50 @@
+/* Additional styles for select and textarea */
+
+.select-input,
+.textarea-input {
+  width: 100%;
+  max-width: 100%;              /* ✅ added */
+  box-sizing: border-box;       /* ✅ MOST IMPORTANT */
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: white;
+}
+
+/* Focus */
+.select-input:focus,
+.textarea-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Textarea */
+.textarea-input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ✅ FIXED SELECT (IMPORTANT) */
+.select-input {
+  -webkit-appearance: none;   /* ✅ mobile fix */
+  -moz-appearance: none;
+  appearance: none;
+
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+}
+
+/* ✅ MOBILE FIX 🔥 */
+@media (max-width: 480px) {
+  .select-input,
+  .textarea-input {
+    font-size: 16px;   /* ✅ zoom + layout fix */
+    padding: 0.75rem;
+  }
+}

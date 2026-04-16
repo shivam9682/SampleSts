@@ -1,0 +1,358 @@
+.books-container {
+  padding: 30px;
+  text-align: center;
+}
+
+.books-container h2 {
+  margin-bottom: 20px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.book-card h3 {
+  margin: 10px 0 5px;
+}
+
+.status {
+  color: green;
+  font-weight: bold;
+}
+.top-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.top-buttons button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.top-buttons button:hover {
+  background-color: #3730a3;
+}
+.borrow-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+.borrow-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.35);
+}
+
+.borrow-btn:active {
+  transform: scale(0.98);
+}
+
+.borrow-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .borrow-btn {
+    padding: 11px 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .borrow-btn {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+}
+.return-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 14px rgba(22, 163, 74, 0.25);
+}
+
+.return-btn:hover {
+  background: linear-gradient(135deg, #15803d, #166534);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(22, 163, 74, 0.35);
+}
+
+.return-btn:active {
+  transform: scale(0.98);
+}
+
+.return-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .return-btn {
+    padding: 11px 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .return-btn {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+}
+.books-container {
+  padding: 30px;
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+.top-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.top-buttons button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.page-title {
+  margin-bottom: 25px;
+  color: #1e293b;
+  font-size: 28px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.book-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.no-image {
+  width: 100%;
+  height: 220px;
+  background: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #374151;
+  font-weight: 600;
+}
+
+.book-details {
+  padding: 18px;
+}
+
+.book-details h3 {
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.book-details p {
+  margin: 7px 0;
+  color: #374151;
+  font-size: 14px;
+}
+
+.available-count {
+  color: green;
+  font-weight: bold;
+}
+
+.not-available-count {
+  color: red;
+  font-weight: bold;
+}
+
+.borrow-btn,
+.reserve-btn {
+  width: 100%;
+  border: none;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.borrow-btn {
+  background: #16a34a;
+}
+
+.borrow-btn:hover {
+  background: #15803d;
+}
+
+.reserve-btn {
+  background: #dc2626;
+}
+
+.reserve-btn:hover {
+  background: #b91c1c;
+}
+
+.loading-text,
+.no-books {
+  text-align: center;
+  margin-top: 50px;
+  color: #374151;
+}
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.book-card {
+  align-self: start;
+  height: fit-content;
+}
+
+.more-book-info {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .books-grid {
+    align-items: start;
+  }
+
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+  }
+}
+.details-btn {
+  background: transparent;
+  border: none;
+  color: #292a2c;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: all 0.3s ease;
+}
+
+.details-btn:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.details-btn:focus {
+  outline: none;
+}
+.already-btn {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.9;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(245, 124, 0, 0.25);
+}
+
+.already-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(245, 124, 0, 0.35);
+}
+
+.already-btn:disabled {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: #fff;
+  opacity: 0.95;
+}

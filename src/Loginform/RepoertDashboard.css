@@ -1,0 +1,524 @@
+/* ReportsDashboard.css */
+
+/* ========== Google Fonts ========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ========== CSS Variables (Grid & Theme) ========== */
+:root {
+  /* Colors */
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #06b6d4;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --dark: #0f172a;
+  --light: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  
+  /* Grid gaps & radii */
+  --grid-gap: 1.5rem;
+  --radius-xl: 1.5rem;
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%),
+              linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  min-height: 100vh;
+}
+
+/* ========== Loading Screen ========== */
+.loading-screen {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.9; letter-spacing: normal; }
+  50% { opacity: 1; letter-spacing: 2px; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+}
+
+/* ========== Dashboard Container (CSS Grid Master Layout) ========== */
+.reports-dashboard {
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Animated background grid */
+.reports-dashboard::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--gray-200) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gray-200) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+  animation: shiftGrid 30s linear infinite;
+}
+
+@keyframes shiftGrid {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+.dashboard-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap);
+}
+
+/* ========== Header with Grid ========== */
+.dashboard-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.dashboard-title h1 {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-title p {
+  color: var(--gray-600);
+  font-weight: 500;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.export-excel,
+.export-pdf {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.export-excel::before,
+.export-pdf::before {
+  content: '📎';
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+.export-excel::before { content: '📊'; }
+.export-pdf::before { content: '📄'; }
+
+.export-excel:hover::before,
+.export-pdf:hover::before {
+  transform: translateY(-2px);
+}
+
+.export-excel:hover {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(16,185,129,0.4);
+}
+
+.export-pdf:hover {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(239,68,68,0.4);
+}
+
+/* ========== Stats Grid (4 cards) - Enhanced Grid ========== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--grid-gap);
+}
+
+.stat-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.stat-card:hover::after {
+  transform: scaleX(1);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+  border-color: rgba(99,102,241,0.3);
+}
+
+.stat-card p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-600);
+  margin-bottom: 0.75rem;
+}
+
+.stat-card h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  font-family: 'Space Grotesk', monospace;
+  background: linear-gradient(135deg, var(--gray-800), var(--gray-600));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.blue-text { background: linear-gradient(135deg, #3b82f6, #2563eb); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.green-text { background: linear-gradient(135deg, #10b981, #059669); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.yellow-text { background: linear-gradient(135deg, #f59e0b, #d97706); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.red-text { background: linear-gradient(135deg, #ef4444, #dc2626); background-clip: text; -webkit-background-clip: text; color: transparent; }
+
+/* ========== Two Column Grid (Most Issued + Active Students) ========== */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gap);
+}
+
+.report-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+  transition: var(--transition-smooth);
+  border: 1px solid var(--gray-200);
+}
+
+.report-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 30px -12px rgba(0,0,0,0.15);
+  border-color: var(--primary);
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, var(--gray-100), white);
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.report-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--dark), var(--primary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.report-header span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: white;
+  padding: 0.25rem 0.8rem;
+  border-radius: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.report-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.report-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--gray-100);
+  transition: background 0.2s;
+}
+
+.report-item:hover {
+  background: linear-gradient(90deg, rgba(99,102,241,0.05), transparent);
+}
+
+.report-item h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+.report-item p {
+  font-size: 0.7rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.blue-badge,
+.green-badge {
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: 2rem;
+  text-align: center;
+  min-width: 60px;
+}
+
+.blue-badge {
+  background: rgba(59,130,246,0.1);
+  color: #2563eb;
+  border: 1px solid rgba(59,130,246,0.2);
+}
+
+.green-badge {
+  background: rgba(16,185,129,0.1);
+  color: #059669;
+  border: 1px solid rgba(16,185,129,0.2);
+}
+
+/* ========== Low Stock Card - Full Width Grid ========== */
+.low-stock-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+  transition: var(--transition-smooth);
+}
+
+.low-stock-card:hover {
+  box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+}
+
+.low-stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #fff5f5, white);
+  border-bottom: 2px solid #fecaca;
+}
+
+.low-stock-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #991b1b;
+}
+
+.low-stock-header span {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.low-stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.low-stock-table th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  background: var(--gray-100);
+  font-weight: 600;
+  color: var(--gray-800);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.low-stock-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-700);
+}
+
+.low-stock-table tr:hover td {
+  background: rgba(239,68,68,0.03);
+}
+
+.low-stock-badge {
+  background: #fee2e2;
+  color: #b91c1c;
+  font-weight: 700;
+  padding: 0.25rem 0.9rem;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+/* ========== Responsive Grid Adjustments ========== */
+@media (max-width: 1024px) {
+  .reports-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .reports-dashboard {
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .dashboard-actions {
+    justify-content: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .report-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .blue-badge, .green-badge {
+    justify-self: start;
+  }
+  
+  .low-stock-table th,
+  .low-stock-table td {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card h2 {
+    font-size: 2rem;
+  }
+  
+  .report-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .dashboard-title h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ========== Scrollbar Styling ========== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}

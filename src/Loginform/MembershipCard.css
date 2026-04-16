@@ -1,0 +1,461 @@
+/* MembershipCard.css - ATM Style Card Design */
+/* Premium dark theme with glassmorphism and metallic accents */
+
+/* Import Google Fonts for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Mono:wght@400;700&display=swap');
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Loading Screen Styles */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: #ffd700;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-screen h2 {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #ffffff, #a0a8c0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Profile Page Container */
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 20% 30%, #0f121c, #05070f);
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ATM STYLE CARD - Main Container */
+.modern-card {
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  min-height: 580px;
+  background: linear-gradient(145deg, #1e2538 0%, #0f1322 100%);
+  border-radius: 32px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 0 0 2px rgba(0, 0, 0, 0.2) inset;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 55px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Animated gradient overlay for ATM shimmer effect */
+.modern-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 40%, rgba(255, 215, 0, 0.08), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* CARD CHIP - ATM style chip using pseudo-element */
+.modern-card::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  width: 52px;
+  height: 40px;
+  background: linear-gradient(135deg, #e8bc7e, #c48b3f);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Contactless icon (Wi-Fi like) */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Left Column Styles */
+.card-left {
+  flex: 0 0 34%;
+  background: rgba(10, 14, 23, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 32px 0 0 32px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border-right: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+/* Remove old overlay if exists */
+.card-left .card-overlay {
+  display: none;
+}
+
+/* Profile Image - ATM style with metallic ring */
+.profile-image-wrapper {
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.profile-image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.1);
+  background: #1a1f2e;
+  transition: all 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.02);
+  border-color: #ffd700;
+}
+
+/* Student Name - embossed metallic effect */
+.student-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ffffff, #d4d9f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.member-role {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ffd966;
+  background: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  margin-bottom: 1.8rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Member ID Box - Card Number Style */
+.member-id-box {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 0.8rem 1rem;
+  border-radius: 16px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.member-id-box span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #9aa2bf;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.member-id-box h3 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffd966;
+  word-break: break-word;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* QR Code Box - ATM style mini qr */
+.qr-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.6rem;
+  border-radius: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin-top: 0.5rem;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+.qr-image {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Right Column Styles */
+.card-right {
+  flex: 1;
+  padding: 2rem 2rem 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* Top bar with title and status */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.8rem;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.25);
+  padding-bottom: 0.8rem;
+}
+
+.card-subtitle {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #9aa2bf;
+  margin-bottom: 0.2rem;
+}
+
+.top-bar h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff, #c0c9e8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.5px;
+}
+
+/* Status Badge - Active with contactless icon effect */
+.status-badge {
+  background: rgba(0, 200, 100, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 1rem;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #4cd964;
+  border: 1px solid rgba(76, 217, 100, 0.5);
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-badge::before {
+  content: "●";
+  font-size: 10px;
+  color: #4cd964;
+  animation: pulse 1.5s infinite;
+}
+
+/* Info Grid - ATM style details */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex: 1;
+}
+
+.info-card {
+  background: rgba(20, 25, 40, 0.7);
+  backdrop-filter: blur(4px);
+  padding: 0.7rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s;
+}
+
+.info-card:hover {
+  background: rgba(30, 36, 56, 0.9);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.info-card span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #8e99c2;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.info-card h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f0f3ff;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Button Group - ATM action button */
+.button-group {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-btn {
+  background: linear-gradient(95deg, #2a324b, #1a1f32);
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 40px;
+  color: #ffd966;
+  font-weight: 600;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-btn:hover {
+  background: linear-gradient(95deg, #3a4565, #252e4a);
+  color: #ffe08c;
+  border-color: rgba(255, 215, 0, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.edit-btn:active {
+  transform: translateY(1px);
+}
+
+/* Add contactless icon to right side (optional visual) */
+.card-right::before {
+  content: "💳";
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  font-size: 2rem;
+  opacity: 0.15;
+  pointer-events: none;
+  transform: rotate(15deg);
+  font-family: monospace;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 850px) {
+  .modern-card {
+    flex-direction: column;
+    max-width: 500px;
+    min-height: auto;
+  }
+  
+  .card-left {
+    flex: auto;
+    border-radius: 32px 32px 0 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 1.5rem;
+  }
+  
+  .card-right {
+    padding: 1.8rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .modern-card::after {
+    top: 18px;
+    left: 20px;
+    width: 44px;
+    height: 34px;
+  }
+  
+  .profile-image {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .student-name {
+    font-size: 1.3rem;
+  }
+}
+
+/* Print & PDF optimization - maintain ATM style when downloading */
+@media print {
+  .profile-page {
+    background: white;
+    padding: 0;
+  }
+  .modern-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  .edit-btn {
+    display: none;
+  }
+  .button-group {
+    display: none;
+  }
+  .modern-card::before, .modern-card::after {
+    display: block;
+    print-color-adjust: exact;
+  }
+  .info-card, .member-id-box {
+    background: #f5f5f5;
+    color: black;
+  }
+}
+
+/* ATM Card extra details: add a subtle "Valid Thru" mock using existing semester field? but purely visual enhancement */
+/* No extra elements added to maintain original HTML integrity */
