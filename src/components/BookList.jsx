@@ -101,11 +101,11 @@ const BookList = () => {
       data.append("libraryBranch", formData.libraryBranch);
       data.append("semester", formData.semester);
       data.append("department", formData.department);
-
+      
       if (formData.image) {
         data.append("image", formData.image);
       }
-
+  
       if (editingBook) {
         await axios.put(`${API_BASE}/${editingBook.id}`, data, {
           headers: {
