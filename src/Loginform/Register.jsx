@@ -60,7 +60,7 @@ export default function Register() {
       }
 
       await axios.post(
-        "http://localhost:8081/api/auth/register",
+        "https://examplereact-backend-11.onrender.com/api/auth/register",
         formData,
         {
           headers: {
