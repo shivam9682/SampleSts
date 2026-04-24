@@ -2,31 +2,35 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LoginDashBoard = () => {
-  const handleUserLogin = () => {
-   // alert('User Login clicked – redirect to user dashboard');
-    // e.g., window.location.href = '/user-dashboard';
-  };
-
-  const handleAdminLogin = () => {
-   // alert('Admin Login clicked – redirect to admin panel');
-    // e.g., window.location.href = '/admin-dashboard';
-  };
 
   return (
     <div style={styles.container}>
       <div style={styles.card}>
+        
+        {/* ✅ Home Button */}
+        <div style={{ textAlign: 'left', marginBottom: '10px' }}>
+          <Link to="/">
+            <button style={styles.homeButton}>🏠 Home</button>
+          </Link>
+        </div>
+
         <h1 style={styles.title}>📚 Library Management System</h1>
         <p style={styles.subtitle}>Please select your login type</p>
+
         <div style={styles.buttonGroup}>
-             <Link to="/login">
-          <button style={styles.userButton} onClick={handleUserLogin}>
-            User Login
-          </button> </Link> 
-          <Link to="/adminLogin" > 
-          <button style={styles.adminButton} onClick={handleAdminLogin}>
-            Admin Login
-          </button>  </Link>
+          <Link to="/login">
+            <button style={styles.userButton}>
+              User Login
+            </button>
+          </Link> 
+
+          <Link to="/adminLogin"> 
+            <button style={styles.adminButton}>
+              Admin Login
+            </button>
+          </Link>
         </div>
+
       </div>
     </div>
   );
@@ -64,6 +68,18 @@ const styles = {
     flexDirection: 'column',
     gap: '1rem',
   },
+
+  // ✅ Home Button Style
+  homeButton: {
+    padding: '6px 12px',
+    fontSize: '0.9rem',
+    backgroundColor: '#555',
+    color: 'white',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+  },
+
   userButton: {
     padding: '12px',
     fontSize: '1rem',
@@ -73,7 +89,6 @@ const styles = {
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
-    transition: 'background-color 0.3s',
   },
   adminButton: {
     padding: '12px',
@@ -84,22 +99,7 @@ const styles = {
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
-    transition: 'background-color 0.3s',
   },
-};
-
-// Add hover effects using JavaScript (optional but keeps pure React)
-// You can also use a <style> tag or CSS classes for hover.
-// For simplicity, we'll attach onMouseEnter/Leave to simulate hover.
-// Alternatively, add these styles to a <style> block.
-const enhancedStyles = { ...styles };
-enhancedStyles.userButton = {
-  ...styles.userButton,
-  ':hover': { backgroundColor: '#45a049' },
-};
-enhancedStyles.adminButton = {
-  ...styles.adminButton,
-  ':hover': { backgroundColor: '#0b7dda' },
 };
 
 export default LoginDashBoard;
