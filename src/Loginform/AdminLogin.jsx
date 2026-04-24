@@ -27,7 +27,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:8081/api/admin/login', {
+      const res = await axios.post('https://examplereact-backend-11.onrender.com/api/admin/login', {
         email,
         password
       });

@@ -20,7 +20,7 @@ function AdminForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8081/api/admin/send-otp",
+        "https://examplereact-backend-11.onrender.com/api/admin/send-otp",
         { email }
       );
 
@@ -43,7 +43,7 @@ function AdminForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8081/api/admin/verify-otp",
+        "https://examplereact-backend-11.onrender.com/api/admin/verify-otp",
         {
           email,
           otp,
@@ -72,7 +72,7 @@ function AdminForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8081/api/admin/reset-password",
+        "https://examplereact-backend-11.onrender.com/api/admin/reset-password",
         {
           email,
           newPassword,

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./AvailableBooks.css";
 
-const API = "http://localhost:8081/api/books";
+const API = "https://examplereact-backend-11.onrender.com/api/books";
 
 export default function AvailableBooks() {
   const [books, setBooks] = useState([]);
@@ -141,7 +141,7 @@ export default function AvailableBooks() {
             <div className="book-card" key={book.id}>
               {book.imagePath ? (
                 <img
-                  src={`http://localhost:8081/uploads/${book.imagePath}`}
+                  src={`https://examplereact-backend-11.onrender.com/uploads/${book.imagePath}`}
                   alt={book.title}
                   className="book-image"
                 />

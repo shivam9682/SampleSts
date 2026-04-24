@@ -24,7 +24,7 @@ export default function UserHistory() {
       }
 
       const response = await axios.get(
-        `http://localhost:8081/api/books/history?email=${email}`
+        `https://examplereact-backend-11.onrender.com/api/books/history?email=${email}`
       );
 
       console.log("History Response:", response.data);
@@ -46,7 +46,7 @@ export default function UserHistory() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8081/api/books/history/${id}`);
+      await axios.delete(`https://examplereact-backend-11.onrender.com/api/books/history/${id}`);
 
       const updatedHistory = history.filter((item) => item.id !== id);
       setHistory(updatedHistory);

@@ -23,7 +23,7 @@ export default function ForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8081/api/auth/send-otp",
+        "https://examplereact-backend-11.onrender.com/api/auth/send-otp",
         { email }
       );
 
@@ -46,7 +46,7 @@ export default function ForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8081/api/auth/verify-otp",
+        "https://examplereact-backend-11.onrender.com/api/auth/verify-otp",
         {
           email,
           otp,
@@ -75,7 +75,7 @@ export default function ForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8081/api/auth/reset-password",
+        "https://examplereact-backend-11.onrender.com/api/auth/reset-password",
         {
           email,
           newPassword,

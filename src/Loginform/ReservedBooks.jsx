@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./ReservedBooks.css";
 
-const API = "http://localhost:8081/api/reserved-books";
+const API = "https://examplereact-backend-11.onrender.com/api/reserved-books";
 
 export default function ReservedBooks() {
   const [reservedBooks, setReservedBooks] = useState([]);
@@ -43,7 +43,7 @@ export default function ReservedBooks() {
   const handleRemoveReservation = async (reservationId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8081/api/reserved-books/remove/${reservationId}`
+        `https://examplereact-backend-11.onrender.com/api/reserved-books/remove/${reservationId}`
       );
 
       alert(response.data);
@@ -79,7 +79,7 @@ export default function ReservedBooks() {
               <div className="image-wrapper">
                 {item.book?.imagePath ? (
                   <img
-                    src={`http://localhost:8081/uploads/${item.book.imagePath}`}
+                    src={`https://examplereact-backend-11.onrender.com/uploads/${item.book.imagePath}`}
                     alt={item.book?.title}
                     className="reserved-book-image"
                   />

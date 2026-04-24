@@ -14,7 +14,7 @@ export default function StudentProfileCard() {
     const fetchStudent = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8081/api/auth/profile?email=${userEmail}`
+          `https://examplereact-backend-11.onrender.com/api/auth/profile?email=${userEmail}`
         );
 
         setStudent(response.data);
@@ -79,7 +79,7 @@ export default function StudentProfileCard() {
             <img
               src={
                 student.photo
-                  ? `http://localhost:8081/uploads/${student.photo}`
+                  ? `https://examplereact-backend-11.onrender.com/uploads/${student.photo}`
                   : "https://via.placeholder.com/150"
               }
               alt={student.name}

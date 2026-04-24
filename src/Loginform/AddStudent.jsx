@@ -31,7 +31,7 @@ export default function AddStudent() {
     try {
       // POST request to backend
       const response = await axios.post(
-        "http://localhost:8081/api/students/add",
+        "https://examplereact-backend-11.onrender.com/api/students/add",
         student, // send the whole object
         {
           headers: {

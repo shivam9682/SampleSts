@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_BASE = "http://localhost:8081/api/books";
+const API_BASE = "https://examplereact-backend-11.onrender.com/api/books";
 
 const AllBooksPage = () => {
   const [books, setBooks] = useState([]);
@@ -46,7 +46,7 @@ const AllBooksPage = () => {
               <img
                 src={
                   book.imagePath
-                    ? `http://localhost:8081/uploads/${book.imagePath}`
+                    ? `https://examplereact-backend-11.onrender.com/uploads/${book.imagePath}`
                     : "https://dummyimage.com/300x200/cccccc/000000&text=No+Image"
                 }
                 alt={book.title}

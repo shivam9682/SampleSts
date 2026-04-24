@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./booklist.css";
-const API_BASE = "http://localhost:8081/api/books";
+const API_BASE = "https://examplereact-backend-11.onrender.com/api/books";
 
 function BookList() {
   const [books, setBooks] = useState([]);
@@ -165,7 +165,7 @@ function BookList() {
           >
             {book.imagePath && (
   <img
-  src={`http://localhost:8081/uploads/${book.imagePath}`}
+  src={`https://examplereact-backend-11.onrender.com/uploads/${book.imagePath}`}
   alt={book.title}
   style={{
     width: "100%",

@@ -26,7 +26,7 @@ export default function StudentList() {
   // Fetch all students
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:8081/api/students/all");
+      const res = await axios.get("https://examplereact-backend-11.onrender.com/api/students/all");
       setStudents(res.data);
       setFilteredStudents(res.data);
     } catch (error) {
@@ -51,7 +51,7 @@ export default function StudentList() {
     if (!window.confirm("Are you sure you want to delete this student?")) return;
 
     try {
-      await axios.delete(`http://localhost:8081/api/students/delete/${id}`);
+      await axios.delete(`https://examplereact-backend-11.onrender.com/api/students/delete/${id}`);
       setStudents(students.filter((s) => s.id !== id));
       alert("Student deleted successfully ✅");
     } catch (error) {
@@ -87,7 +87,7 @@ export default function StudentList() {
   const handleUpdate = async (id) => {
     try {
       const res = await axios.put(
-        `http://localhost:8081/api/students/update/${id}`,
+        `https://examplereact-backend-11.onrender.com/api/students/update/${id}`,
         editData
       );
       setStudents(students.map((s) => (s.id === id ? res.data : s)));

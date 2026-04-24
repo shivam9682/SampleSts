@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AllBooks.css";
 
-const API = "http://localhost:8081/api/books";
+const API = "https://examplereact-backend-11.onrender.com/api/books";
 
 export default function AllBooks() {
   const [books, setBooks] = useState([]);
@@ -97,7 +97,7 @@ export default function AllBooks() {
             <div className="book-card" key={book.id}>
               {book.imagePath && (
                 <img
-                  src={`http://localhost:8081/uploads/${book.imagePath}`}
+                  src={`https://examplereact-backend-11.onrender.com/uploads/${book.imagePath}`}
                   alt={book.title}
                   className="book-image"
                   onError={(e) => (e.target.style.display = "none")}

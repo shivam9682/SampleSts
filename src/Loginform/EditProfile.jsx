@@ -41,7 +41,7 @@ export function EditProfile() {
         setPreview(
           storedUser.photo.startsWith("http")
             ? storedUser.photo
-            : `http://localhost:8081/${storedUser.photo}`
+            : `https://examplereact-backend-11.onrender.com/${storedUser.photo}`
         );
       }
     }
@@ -86,7 +86,7 @@ submitData.append("id", formData.id);
       }
 
       const res = await axios.put(
-        "http://localhost:8081/api/auth/update-profile",
+        "https://examplereact-backend-11.onrender.com/api/auth/update-profile",
         submitData,
         {
           headers: {

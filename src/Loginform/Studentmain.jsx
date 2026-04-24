@@ -20,7 +20,7 @@ export default function Studentmain() {
   // Fetch all students
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:8081/api/students/all");
+      const res = await axios.get("https://examplereact-backend-11.onrender.com/api/students/all");
       setStudents(res.data);
       setFilteredStudents(res.data);
     } catch (error) {
@@ -55,7 +55,7 @@ export default function Studentmain() {
   // Save edited student
   const saveEdit = async (id) => {
     try {
-      await axios.put(`http://localhost:8081/api/students/${id}`, editData);
+      await axios.put(`https://examplereact-backend-11.onrender.com/api/students/${id}`, editData);
       fetchStudents(); // Refresh list
       cancelEdit();
     } catch (error) {

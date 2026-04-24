@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AvailableBooks.css";
 
-const API = "http://localhost:8081/api/books";
+const API = "https://examplereact-backend-11.onrender.com/api/books";
 const LATE_FEE_PER_DAY = 10;
 
 export default function BorrowedBooks() {

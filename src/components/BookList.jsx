@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./booklist.css";
 
-const API_BASE = "http://localhost:8081/api/books";
+const API_BASE = "https://examplereact-backend-11.onrender.com/api/books";
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -280,7 +280,7 @@ const BookList = () => {
               className="book-image"
               src={
                 book.imagePath
-                  ? `http://localhost:8081/uploads/${book.imagePath}`
+                  ? `https://examplereact-backend-11.onrender.com/uploads/${book.imagePath}`
                   : "https://dummyimage.com/400x220/cccccc/000000&text=No+Image"
               }
               alt={book.title}

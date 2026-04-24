@@ -23,19 +23,19 @@ export default function ReportsDashboard() {
   const fetchReports = async () => {
     try {
       const dashboardRes = await axios.get(
-        "http://localhost:8081/api/reports/dashboard"
+        "https://examplereact-backend-11.onrender.com/api/reports/dashboard"
       );
 
       const issuedBooksRes = await axios.get(
-        "http://localhost:8081/api/reports/most-issued-books"
+        "https://examplereact-backend-11.onrender.com/api/reports/most-issued-books"
       );
 
       const activeStudentsRes = await axios.get(
-        "http://localhost:8081/api/reports/most-active-students"
+        "https://examplereact-backend-11.onrender.com/api/reports/most-active-students"
       );
 
       const lowStockRes = await axios.get(
-        "http://localhost:8081/api/reports/low-stock-books"
+        "https://examplereact-backend-11.onrender.com/api/reports/low-stock-books"
       );
 
       setDashboardData(dashboardRes.data);
@@ -63,11 +63,11 @@ export default function ReportsDashboard() {
   };
 
   const exportExcel = () => {
-    window.open("http://localhost:8081/api/reports/export-excel", "_blank");
+    window.open("https://examplereact-backend-11.onrender.com/api/reports/export-excel", "_blank");
   };
 
   const exportPdf = () => {
-    window.open("http://localhost:8081/api/reports/export-pdf", "_blank");
+    window.open("https://examplereact-backend-11.onrender.com/api/reports/export-pdf", "_blank");
   };
 
   if (loading) {
