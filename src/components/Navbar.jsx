@@ -15,7 +15,6 @@ export default function Navbar() {
   const toggleMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  const menuRef = useRef(null);
   useEffect(() => {
   if (mobileMenuOpen) {
     document.documentElement.style.overflow = "hidden";
@@ -53,31 +52,6 @@ useEffect(() => {
     window.removeEventListener("popstate", syncUser);
   };
 }, []);
-
-useEffect(() => {
-  const handleClickOutsideMenu = (event) => {
-    if (
-      mobileMenuOpen &&
-      menuRef.current &&
-      !menuRef.current.contains(event.target)
-    ) {
-      setMobileMenuOpen(false);
-    }
-  };
-
-  document.addEventListener("mousedown", handleClickOutsideMenu);
-
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutsideMenu);
-  };
-}, [mobileMenuOpen]);
-
-
-useEffect(() => {
-  setMobileMenuOpen(false);
-}, [location]);
-
-
   useEffect(() => {
     const loggedUser = localStorage.getItem('user');
     const adminData = localStorage.getItem('admin');
@@ -118,10 +92,10 @@ useEffect(() => {
     if (user.photo.startsWith('http')) return user.photo;
 
     if (user.photo.startsWith('uploads/')) {
-      return `http://localhost:8081/${user.photo}`;
+      return `https://examplereact-backend-11.onrender.com/${user.photo}`;
     }
 
-    return `http://localhost:8081/uploads/${user.photo}`;
+    return `https://examplereact-backend-11.onrender.com/uploads/${user.photo}`;
   };
 
   const profileImage = getProfileImage();
@@ -163,11 +137,7 @@ useEffect(() => {
         </div>
 
         <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-          <div 
-  className={`nav-links ${mobileMenuOpen ? 'active' : ''}`} 
-  ref={menuRef}
-></div>
-
+          
           {/* Guest Navbar */}
           {!user && !admin && (
             <>
