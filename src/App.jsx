@@ -67,12 +67,13 @@ function App() {
         />
 
          <Route
-         path="/book-details"
-         element={
-          <ProtectedRoute>
-            <BookDetails/>
-          </ProtectedRoute>
-         }
+  path="/book-details/:id"
+  element={
+    <ProtectedRoute>
+      <BookDetails />
+    </ProtectedRoute>
+  }
+/>
 
 
         <Route 
