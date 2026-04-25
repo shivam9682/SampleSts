@@ -181,10 +181,10 @@
 @media (max-width: 768px) {
   .profile-dropdown {
     position: fixed;   /* 🔥 best mobile fix */
-    top: 420px;
+    top: 100px;
     right: 10px;
     left: 10px;
-    width: 333px;
+    width: 270px;
   }
 }
 
