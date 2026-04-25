@@ -30,7 +30,7 @@ import AdminLibraryPage from "./Loginform/AdminLibraryPage";
 import StudentList from "./Loginform/StudentList";
 import AdminReport from "./Loginform/AdminReport";
 import AdminLogin from "./Loginform/AdminLogin"
-import BookDetails from "./Loginform/BookDetails";
+
 function App() {
   const location = useLocation();
 
