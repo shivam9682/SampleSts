@@ -31,7 +31,7 @@ export default function BookDetails() {
         <div className="details-top">
           {book.imagePath ? (
             <img
-              src={`http://localhost:8081/uploads/${book.imagePath}`}
+              src={`https://examplereact-backend-11.onrender.com/uploads/${book.imagePath}`}
               alt={book.title}
               className="details-image"
             />
@@ -98,7 +98,7 @@ export default function BookDetails() {
               {previewImages.map((img, index) => (
                 <div className="preview-image-card" key={index}>
                   <img
-                    src={`http://localhost:8081/uploads/${img}`}
+                    src={`https://examplereact-backend-11.onrender.com/uploads/${img}`}
                     alt={`Preview ${index + 1}`}
                     className="preview-book-image"
                   />
