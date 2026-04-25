@@ -29,7 +29,7 @@ import AddBook from "./components/AddBook";
 import AdminLibraryPage from "./Loginform/AdminLibraryPage";
 import StudentList from "./Loginform/StudentList";
 import AdminReport from "./Loginform/AdminReport";
-
+import AdminLogin from "./Loginform/AdminLogin"
 function App() {
   const location = useLocation();
 
@@ -63,6 +63,16 @@ function App() {
               <AvailableBooks />
             </ProtectedRoute>
           }
+        />
+
+
+        <Route 
+        path="/adminLogin"
+        element = {
+          <ProtectedRoute>
+          <AdminLogin/>
+          </ProtectedRoute>
+        }
         />
 
         <Route
