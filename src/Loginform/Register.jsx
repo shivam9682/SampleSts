@@ -56,7 +56,7 @@ export default function Register() {
       formData.append("branchName", data.branchName);
 
       if (data.photo) {
-        formData.append("photo", data.photo);
+       // formData.append("photo", data.photo);
       }
 
       await axios.post(
