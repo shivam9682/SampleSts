@@ -100,18 +100,7 @@ export default function Register() {
     { value: "Arts", label: "Arts" },
     { value: "Commerce", label: "Commerce" },
   ];
-  const handleChange = (e) => {
-  const { name, files, value } = e.target;
-
-  if (files && files[0]) {
-    const file = files[0];
-
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Image must be less than 2MB ❌");
-      return;
-    }
-  }
-
+ 
   setData((prev) => ({
     ...prev,
     [name]: files ? files[0] : value,
