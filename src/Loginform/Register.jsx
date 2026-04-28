@@ -22,17 +22,8 @@ export default function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  // 🔥 handle change
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
-    // file size validation
-    if (files && files[0]) {
-      if (files[0].size > 2 * 1024 * 1024) {
-        alert("Image must be less than 2MB ❌");
-        return;
-      }
-    }
 
     setData((prev) => ({
       ...prev,
@@ -48,57 +39,8 @@ export default function Register() {
     }));
   };
 
-  // 🔥 VALIDATION FUNCTION
-  const validate = () => {
-    if (!data.name.trim()) {
-      alert("Name is required ❌");
-      return false;
-    }
-
-    if (!data.email.trim()) {
-      alert("Email is required ❌");
-      return false;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-      alert("Invalid email ❌");
-      return false;
-    }
-
-    if (!data.class) {
-      alert("Class is required ❌");
-      return false;
-    }
-
-    if (!data.gender) {
-      alert("Gender is required ❌");
-      return false;
-    }
-
-    if (!data.address.trim()) {
-      alert("Address is required ❌");
-      return false;
-    }
-
-    if (!data.password) {
-      alert("Password is required ❌");
-      return false;
-    }
-
-    if (data.password.length < 6) {
-      alert("Password must be at least 6 characters ❌");
-      return false;
-    }
-
-    return true;
-  };
-
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    // 🔥 VALIDATION CALL
-    if (!validate()) return;
 
     try {
       const formData = new FormData();
@@ -130,8 +72,8 @@ export default function Register() {
       alert("Registered Successfully ✅");
       navigate("/login");
     } catch (err) {
-      console.error(err.response?.data || err);
-      alert(err.response?.data || "Error registering ❌");
+      console.error(err);
+      alert("Error registering ❌");
     }
   };
 
@@ -208,6 +150,8 @@ export default function Register() {
             />
           </div>
 
+          {/* 🔥 react-select dropdowns */}
+
           <div className="input-group">
             <Select
               options={classOptions}
@@ -221,6 +165,30 @@ export default function Register() {
               options={genderOptions}
               placeholder="Select Gender"
               onChange={(val) => handleSelectChange("gender", val)}
+            />
+          </div>
+
+          <div className="input-group">
+            <Select
+              options={departmentOptions}
+              placeholder="Select Department"
+              onChange={(val) => handleSelectChange("department", val)}
+            />
+          </div>
+
+          <div className="input-group">
+            <Select
+              options={semesterOptions}
+              placeholder="Select Semester"
+              onChange={(val) => handleSelectChange("semester", val)}
+            />
+          </div>
+
+          <div className="input-group">
+            <Select
+              options={branchOptions}
+              placeholder="Select Branch"
+              onChange={(val) => handleSelectChange("branchName", val)}
             />
           </div>
 
