@@ -21,7 +21,7 @@ export default function Register() {
   });
 
   const [showPassword, setShowPassword] = useState(false);
-
+const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
