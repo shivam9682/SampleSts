@@ -6,7 +6,7 @@ import "./Register.css";
 
 export default function Register() {
   const navigate = useNavigate();
-
+  
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -39,44 +39,47 @@ export default function Register() {
     }));
   };
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
+ const handleRegister = async (e) => {
+  e.preventDefault();
 
-    try {
-      const formData = new FormData();
+  if (loading) return; // 🚫 double click stop
+  setLoading(true);
 
-      formData.append("name", data.name);
-      formData.append("email", data.email);
-      formData.append("studentClass", data.class);
-      formData.append("gender", data.gender);
-      formData.append("address", data.address);
-      formData.append("password", data.password);
-      formData.append("department", data.department);
-      formData.append("semester", data.semester);
-      formData.append("branchName", data.branchName);
+  try {
+    const formData = new FormData();
 
-      if (data.photo) {
-        formData.append("photo", data.photo);
-      }
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("studentClass", data.class);
+    formData.append("gender", data.gender);
+    formData.append("address", data.address);
+    formData.append("password", data.password);
+    formData.append("department", data.department);
+    formData.append("semester", data.semester);
+    formData.append("branchName", data.branchName);
 
-      await axios.post(
-        "https://examplereact-backend-11.onrender.com/api/auth/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      alert("Registered Successfully ✅");
-      navigate("/login");
-    } catch (err) {
-      console.error(err);
-      alert("Error registering ❌");
+    if (data.photo) {
+      formData.append("photo", data.photo);
     }
-  };
 
+    await axios.post(
+      "https://examplereact-backend-11.onrender.com/api/auth/register",
+      formData,
+      {
+        timeout: 30000, // ⏱️ wait for slow server
+      }
+    );
+
+    alert("Registered Successfully ✅");
+    navigate("/login");
+
+  } catch (err) {
+    console.error(err);
+    alert("Server slow hai, please wait and try again ❌");
+  } finally {
+    setLoading(false);
+  }
+};
   // 🔥 options
   const classOptions = [
     { value: "10th", label: "10th" },
@@ -226,9 +229,9 @@ export default function Register() {
             </button>
           </div>
 
-          <button type="submit" className="auth-button">
-            Sign Up
-          </button>
+         <button type="submit" disabled={loading}>
+  {loading ? "Please wait..." : "Register"}
+</button>
         </form>
 
         <p className="auth-toggle">
