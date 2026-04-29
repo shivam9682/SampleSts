@@ -21,7 +21,7 @@ export default function Register() {
   });
 
   const [showPassword, setShowPassword] = useState(false);
-const [loading, setLoading] = useState(false);
+ const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -39,47 +39,44 @@ const [loading, setLoading] = useState(false);
     }));
   };
 
- const handleRegister = async (e) => {
-  e.preventDefault();
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-  if (loading) return; // 🚫 double click stop
-  setLoading(true);
+    try {
+      const formData = new FormData();
 
-  try {
-    const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("studentClass", data.class);
+      formData.append("gender", data.gender);
+      formData.append("address", data.address);
+      formData.append("password", data.password);
+      formData.append("department", data.department);
+      formData.append("semester", data.semester);
+      formData.append("branchName", data.branchName);
 
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("studentClass", data.class);
-    formData.append("gender", data.gender);
-    formData.append("address", data.address);
-    formData.append("password", data.password);
-    formData.append("department", data.department);
-    formData.append("semester", data.semester);
-    formData.append("branchName", data.branchName);
-
-    if (data.photo) {
-      formData.append("photo", data.photo);
-    }
-
-    await axios.post(
-      "https://examplereact-backend-11.onrender.com/api/auth/register",
-      formData,
-      {
-        timeout: 30000, // ⏱️ wait for slow server
+      if (data.photo) {
+        formData.append("photo", data.photo);
       }
-    );
 
-    alert("Registered Successfully ✅");
-    navigate("/login");
+      await axios.post(
+        "https://examplereact-backend-11.onrender.com/api/auth/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-  } catch (err) {
-    console.error(err);
-    alert("Server slow hai, please wait and try again ❌");
-  } finally {
-    setLoading(false);
-  }
-};
+      alert("Registered Successfully ✅");
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+      alert("Error registering ❌");
+    }
+  };
+
   // 🔥 options
   const classOptions = [
     { value: "10th", label: "10th" },
@@ -229,10 +226,14 @@ const [loading, setLoading] = useState(false);
             </button>
           </div>
 
-         <button type="submit" disabled={loading}>
-  {loading ? "Please wait..." : "Register"}
-</button>
-        </form>
+          <button
+            type="submit"
+            className="auth-button"
+            disabled={loading}
+          >
+            {loading ? "Signing in..." : "Register"}
+          </button>
+        </form>       
 
         <p className="auth-toggle">
           Already have an account? <Link to="/login">Sign In</Link>
