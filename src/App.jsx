@@ -31,6 +31,7 @@ import StudentList from "./Loginform/StudentList";
 import AdminReport from "./Loginform/AdminReport";
 import AdminLogin from "./Loginform/AdminLogin"
 import BookDetails from "./Loginform/BookDetails";
+import ForgotPassword from "./Loginform/ForgotPassword";
 function App() {
   const location = useLocation();
 
@@ -172,6 +173,24 @@ function App() {
             <ProtectedRoute>
               <AdminReport />
             </ProtectedRoute>
+          }
+        />
+         
+         <Route
+         path ="/forgot-password"
+        element={
+          <ProtectedRoute>
+            <ForgotPassword/>
+          </ProtectedRoute>
+        }
+/>
+         <Route
+          path="*"
+          element={
+            <div style={{ padding: "2rem", textAlign: "center" }}>
+              <h1>404 - Page Not Found</h1>
+              <p>The page you are looking for does not exist.</p>
+            </div>
           }
         />
 
