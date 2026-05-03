@@ -6,7 +6,7 @@ import "./Register.css";
 
 export default function Register() {
   const navigate = useNavigate();
-  
+
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -21,7 +21,8 @@ export default function Register() {
   });
 
   const [showPassword, setShowPassword] = useState(false);
- const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -31,7 +32,6 @@ export default function Register() {
     }));
   };
 
-  // 🔥 react-select handler
   const handleSelectChange = (name, selectedOption) => {
     setData((prev) => ({
       ...prev,
@@ -42,22 +42,18 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    if (loading) return; // 🔥 prevent multiple clicks
+
+    setLoading(true);
+
     try {
       const formData = new FormData();
 
-      formData.append("name", data.name);
-      formData.append("email", data.email);
-      formData.append("studentClass", data.class);
-      formData.append("gender", data.gender);
-      formData.append("address", data.address);
-      formData.append("password", data.password);
-      formData.append("department", data.department);
-      formData.append("semester", data.semester);
-      formData.append("branchName", data.branchName);
-
-      if (data.photo) {
-        formData.append("photo", data.photo);
-      }
+      Object.keys(data).forEach((key) => {
+        if (data[key]) {
+          formData.append(key === "class" ? "studentClass" : key, data[key]);
+        }
+      });
 
       await axios.post(
         "https://examplereact-backend-11.onrender.com/api/auth/register",
@@ -73,15 +69,14 @@ export default function Register() {
       navigate("/login");
     } catch (err) {
       console.error(err);
-      alert("Error registering ❌");
+      alert(err.response?.data?.message || "Error registering ❌");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // 🔥 options
   const classOptions = [
-    { value: "10th", label: "10th" },
-    { value: "11th", label: "11th" },
-    { value: "12th", label: "12th" },
+    
     { value: "B.Tech", label: "B.Tech" },
     { value: "M.Tech", label: "M.Tech" },
     { value: "B.Sc", label: "B.Sc" },
@@ -129,6 +124,10 @@ export default function Register() {
 
         <form onSubmit={handleRegister}>
           <div className="input-group">
+
+            <label>
+    Full Name <span className="required">*</span>
+  </label>
             <input
               type="text"
               name="name"
@@ -140,6 +139,9 @@ export default function Register() {
           </div>
 
           <div className="input-group">
+             <label>
+                   Email <span className="required">*</span>
+                    </label>
             <input
               type="email"
               name="email"
@@ -150,9 +152,10 @@ export default function Register() {
             />
           </div>
 
-          {/* 🔥 react-select dropdowns */}
-
           <div className="input-group">
+            <label>
+              Class <span className="required">*</span>
+            </label>
             <Select
               options={classOptions}
               placeholder="Select Class"
@@ -161,6 +164,9 @@ export default function Register() {
           </div>
 
           <div className="input-group">
+            <label>
+              Gender <span className="required">*</span>
+            </label>
             <Select
               options={genderOptions}
               placeholder="Select Gender"
@@ -169,6 +175,9 @@ export default function Register() {
           </div>
 
           <div className="input-group">
+            <label>
+              Department <span className="required">*</span>
+            </label>
             <Select
               options={departmentOptions}
               placeholder="Select Department"
@@ -177,6 +186,9 @@ export default function Register() {
           </div>
 
           <div className="input-group">
+            <label>
+              Semester <span className="required">*</span>
+            </label>
             <Select
               options={semesterOptions}
               placeholder="Select Semester"
@@ -185,6 +197,9 @@ export default function Register() {
           </div>
 
           <div className="input-group">
+            <label>
+              Branch <span className="required">*</span>
+            </label>
             <Select
               options={branchOptions}
               placeholder="Select Branch"
@@ -193,23 +208,31 @@ export default function Register() {
           </div>
 
           <div className="input-group">
+            <label>
+              Address <span className="required">*</span>
+            </label>
             <textarea
-              name="address"
-              placeholder="Address"
-              value={data.address}
-              onChange={handleChange}
-              required
-              rows="3"
-              className="textarea-input"
-            />
+  name="address"
+  placeholder="Address"
+  value={data.address}
+  onChange={handleChange}
+  required
+  rows="6"
+  style={{ width: "400px" }}
+/>
           </div>
 
           <div className="input-group">
-            <label>Profile Photo</label>
+            <label>
+              Photo <span className="required">*</span>
+            </label>
             <input type="file" name="photo" onChange={handleChange} />
           </div>
 
           <div className="input-group password-group">
+            <label>
+              Password <span className="required">*</span>
+            </label>
             <input
               type={showPassword ? "text" : "password"}
               name="password"
@@ -226,14 +249,10 @@ export default function Register() {
             </button>
           </div>
 
-          <button
-            type="submit"
-            className="auth-button"
-            disabled={loading}
-          >
-            {loading ? "Signing in..." : "Register"}
+          <button type="submit" disabled={loading} className="auth-button">
+            {loading ? "Registering..." : "Register"}
           </button>
-        </form>       
+        </form>
 
         <p className="auth-toggle">
           Already have an account? <Link to="/login">Sign In</Link>
