@@ -79,8 +79,7 @@ useEffect(() => {
     localStorage.removeItem('admin');
     localStorage.removeItem('adminEmail');
     localStorage.removeItem('isAuth');
- localStorage.removeItem('accessToken');
-  localStorage.removeItem('refreshToken');
+ 
     setUser(null);
     setAdmin(null);
 
