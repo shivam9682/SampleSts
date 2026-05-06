@@ -32,6 +32,7 @@ import AdminReport from "./Loginform/AdminReport";
 import AdminLogin from "./Loginform/AdminLogin"
 import BookDetails from "./Loginform/BookDetails";
 import ForgotPassword from "./Loginform/ForgotPassword";
+import AdminForgotPassword from "./Loginform/AdminForgotPassword";
 function App() {
   const location = useLocation();
 
@@ -184,6 +185,13 @@ function App() {
           
         }
 />
+
+        <Route
+           path="/admin-forgot-password"
+           element={
+             <AdminForgotPassword />
+           }
+         />
          <Route
           path="*"
           element={
