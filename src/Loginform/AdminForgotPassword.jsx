@@ -96,7 +96,7 @@ function AdminForgotPassword() {
   return (
     <div className="forgot-container">
       <div className="forgot-card">
-        <h2>Forgot Password</h2>
+        <h2>Admin Forgot Password</h2>
 
         {message && <p className="message">{message}</p>}
 
