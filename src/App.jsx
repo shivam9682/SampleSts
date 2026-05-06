@@ -179,9 +179,9 @@ function App() {
          <Route
          path ="/forgot-password"
         element={
-          <ProtectedRoute>
+         
             <ForgotPassword/>
-          </ProtectedRoute>
+          
         }
 />
          <Route
