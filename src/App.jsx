@@ -153,9 +153,9 @@ function App() {
         <Route
           path="/adminlibrarypage"
           element={
-            <ProtectedRoute>
+           
               <AdminLibraryPage />
-            </ProtectedRoute>
+            
           }
         />
 
