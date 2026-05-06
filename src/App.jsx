@@ -80,9 +80,9 @@ function App() {
         <Route 
         path="/adminLogin"
         element = {
-          <ProtectedRoute>
+         
           <AdminLogin/>
-          </ProtectedRoute>
+         
         }
         />
 
